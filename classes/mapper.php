@@ -16,6 +16,7 @@ class Mapper{
             $this->src = $Src;
             return;
         }
+        
         $this->src = null;
     }
     
@@ -24,6 +25,7 @@ class Mapper{
             $this->dst = $Dst;
             return;
         }
+
         $this->dst = null;
     }
     
@@ -44,6 +46,15 @@ class Mapper{
                         $Obj = new TeamReadDTO();
                         $Obj->setID($this->src->getID());
                         $Obj->setName($this->src->getName());
+                        $Obj->setState($this->src->getState());
+                        $Obj->setCity($this->src->getCity());
+                        $Obj->setDistrict($this->src->getDistrict());
+                        $Obj->setLocation($this->src->getLocation());
+                        $Obj->setMatches($this->src->getMatches());
+                        $Obj->setWon($this->src->getWon());
+                        $Obj->setLost($this->src->getLost());
+                        $Obj->setCoach($this->src->getCoach());
+
                         return $Obj;
                     }
                 }

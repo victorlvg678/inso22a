@@ -17,6 +17,7 @@ class SecQuestion{
             $this->id = $ID;
             return;
         }
+
         $this->id = 1;
     }
     
@@ -27,6 +28,7 @@ class SecQuestion{
             $this->en = $EN;
             return;
         }
+
         $this->en = "NA";
     }
     
@@ -37,6 +39,7 @@ class SecQuestion{
             $this->es = $ES;
             return;
         }
+
         $this->es = "NA";
     }
     
@@ -45,9 +48,18 @@ class SecQuestion{
             echo "Error SecQuestion::set(SecQuestion): SecQuestion is empty";
             return;
         }
-        setID($Src["ID"]);
-        setEN($Src["EN"]);
-        setES($Src["Es"]);
+
+        if(array_key_exists("ID", $Src)){
+            $this->setID($Src["ID"]);
+        }
+
+        if(array_key_exists("EN", $Src)){
+            $this->setEN($Src["EN"]);
+        }
+        
+        if(array_key_exists("ES", $Src)){
+            $this->setES($Src["ES"]);
+        }
     }
     
     // |----------------Getters------------------------------------------------|

@@ -4,6 +4,7 @@ require_once('../classes/mapper.php');
 require_once('../classes/json.php');
 require_once('../models/team.php');
 require_once('../dtos/teamreaddto.php');
+require_once('../classes/apierror.php');
 class TeamController{
     private $repo;
     
@@ -13,166 +14,219 @@ class TeamController{
     
     public function getByID($ID){
         $items = $this->repo->getByID($ID);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
         $team = Array();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
-        $Src = new Team();
         $JSON = new JSON();
-        $Src->set($items[0]);
-        $mapper->setSrc($Src);
+        $mapper->setSrc($items[0]);
         array_push($team, $mapper->Map());
+
         return json_encode($JSON->Parse($team));
     }
     
     public function getByName($Name){
         $items = $this->repo->getByName($Name);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
-        $Src = new Team();
         $JSON = new JSON();
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByState($State){
         $items = $this->repo->getByState($State);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
         $mapper = new Mapper();
-        $Src = new Team();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByCity($City){
         $items = $this->repo->getByCity($City);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
         $mapper = new Mapper();
-        $Src = new Team();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByDistrict($District){
         $items = $this->repo->getByDistrict($District);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
-        
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByLocation($Location){
         $items = $this->repo->getByLocation($Location);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
+            $mapper->setSrc($items[$x]);
             array_push($teamsread, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByMatches($Matches){
         $items = $this->repo->getByMatches($Matches);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByWon($Won){
         $items = $this->repo->getByWon($Won);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByLost($Lost){
         $items = $this->repo->getByLost($Lost);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(7);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getByCoach($Name){
         $items = $this->repo->getByCoach($Name);
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(7);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+        
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+
+        return json_encode($JSON->Parse($teams));
     }
     
     public function getAll(){
         $items = $this->repo->getAll();
-        $teamsread = Array();
+        if(count($items) <= 0){
+            $Error = new APIError(7);
+            return $Error->getMessage();
+        }
+
+        $teams = Array();
         $JSON = new JSON();
-        $Src = new Team();
         $mapper = new Mapper();
         $mapper->setDst(new TeamReadDTO());
+
         for($x = 0; $x < count($items); $x++){
-            $Src->set($items[$x]);
-            $mapper->setSrc($Src);
-            array_push($teamsread, $mapper->Map());
+            $mapper->setSrc($items[$x]);
+            array_push($teams, $mapper->Map());
         }
-        return json_encode($JSON->Parse($teamsread));
+        
+        return json_encode($JSON->Parse($teams));
     }
 }
 ?>

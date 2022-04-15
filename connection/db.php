@@ -56,6 +56,7 @@ class DB{
             echo "Error DB::Connect(): (" . $MySQLi->connect_errno . ") " . $MySQLi->connect_error;
             return null;
         }
+
         return $MySQLi;
     }
     
@@ -65,6 +66,7 @@ class DB{
             echo "Error DB::Connect(): (" . $MySQLi->connect_errno . ") " . $MySQLi->connect_error;
             return false;
         }
+        
         return true;
     }
 }

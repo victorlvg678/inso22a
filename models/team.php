@@ -30,6 +30,7 @@ class Team{
             $this->id = $ID;
             return;
         }
+
         $this->id = 1;
     }
     
@@ -38,6 +39,7 @@ class Team{
             $this->name = $Name;
             return;
         }
+
         $this->name = "NA";
     }
     
@@ -46,6 +48,7 @@ class Team{
             $this->state =$State;
             return;
         }
+
         $this->state = "NA";
     }
     
@@ -53,6 +56,7 @@ class Team{
         if(!empty($City)){
             $this->city = $City;
         }
+
         $this->city = "NA";
     }
     
@@ -62,6 +66,7 @@ class Team{
             $this->district = $District;
             return;
         }
+
         $this->district = "NA";
     }
     
@@ -71,6 +76,7 @@ class Team{
             $this->location = $Location;
             return;
         }
+
         $this->location = "NA";
     }
     
@@ -79,6 +85,7 @@ class Team{
             $this->matches = $Matches;
             return;
         }
+
         $this->matches = 0;
     }
     
@@ -88,6 +95,7 @@ class Team{
             $this->won = $Won;
             return;
         }
+
         $this->won = 0;
     }
     
@@ -97,6 +105,7 @@ class Team{
             $this->lost = $Lost;
             return;
         }
+
         $this->lost = 0;
     }
     
@@ -105,6 +114,7 @@ class Team{
             $this->coach = $Coach;
             return;
         }
+
         $this->coach = 0;
     }
     
@@ -113,42 +123,52 @@ class Team{
             echo "Error Team::set(Team): Team is empty";
             return;
         }
+
         if(array_key_exists("ID", $Src))
         {
             $this->setID($Src["ID"]);
         }
+
         if(array_key_exists("Name", $Src))
         {
             $this->setName($Src["Name"]);
         }
+
         if(array_key_exists("State", $Src))
         {
             $this->setState($Src["State"]);
         }
+
         if(array_key_exists("City", $Src))
         {
             $this->setCity($Src["City"]);
         }
+
         if(array_key_exists("District", $Src))
         {
             $this->setDistrict($Src["District"]);
         }
+
         if(array_key_exists("Location", $Src))
         {
             $this->setLocation($Src["Location"]);
         }
+
         if(array_key_exists("Matches", $Src))
         {
             $this->setMatches($Src["Matches"]);
         }
+
         if(array_key_exists("Won", $Src))
         {
             $this->setWon($Src["Won"]);
         }
+
         if(array_key_exists("Lost", $Src))
         {
             $this->setLost($Src["Lost"]);
         }
+        
         if(array_key_exists("Coach", $Src))
         {
             $this->setCoach($Src["Coach"]);

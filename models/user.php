@@ -31,23 +31,23 @@ class User{
         $this->username = 'john.doe';
         $this->firstname = 'John';
         $this->lastname = 'Doe';
-        $this->team = 1;
+        $this->team = 0;
         $this->birthdate = '1900-01-01';
         $this->description = '';
         $this->status = 0;
         $this->notify= 0;
         $this->password = "80413493fbb88c6e2e77b5de4ff5d6b760afa0ac03f2ca042b28e8db2e40710b";
         $this->salt = "M6a6sxbVk78R71MyJrkRdoPHSif8dKx6";
-        $this->role = 1;
+        $this->role = 0;
         $this->lastlogin = null;
-        $this->qid1 = 1;
-        $this->qid2 = 2;
-        $this->qid3 = 3;
-        $this->qid4 = 4;
-        $this->qa1 = "QA1";
-        $this->qa2 = "QA2";
-        $this->qa3 = "QA3";
-        $this->qa4 = "QA4";
+        $this->qid1 = 0;
+        $this->qid2 = 0;
+        $this->qid3 = 0;
+        $this->qid4 = 0;
+        $this->qa1 = "NA";
+        $this->qa2 = "NA";
+        $this->qa3 = "NA";
+        $this->qa4 = "NA";
         $this->nationality = "NA";
         $this->entrydate = "1901-01-01";
         $this->weight = 0.0;
@@ -60,6 +60,7 @@ class User{
             $this->id = $ID;
             return;
         }
+
         $this->id = 1;
     }
     
@@ -68,6 +69,7 @@ class User{
             $this->username = $Username;
             return;
         }
+
         $this->username = 'john.doe';
     }
     
@@ -76,6 +78,7 @@ class User{
             $this->firstname = $Firstname;
             return;
         }
+
         $this->firstname = 'John';
     }
     
@@ -84,6 +87,7 @@ class User{
             $this->lastname = $Lastname;
             return;
         }
+
         $this->lastname = 'Doe';
     }
     
@@ -92,7 +96,8 @@ class User{
             $this->team = $Team;
             return;
         }
-        $this->team = 1;
+
+        $this->team = 0;
     }
     
     public function setBirthDate($BirthDate){
@@ -100,6 +105,7 @@ class User{
             $this->birthdate = $BirthDate;
             return;
         }
+
         $this->birthdate = '1900-01-01';
     }
     
@@ -108,6 +114,7 @@ class User{
             $this->description = $Description;
             return;
         }
+
         $this->description = '';
     }
     
@@ -117,6 +124,7 @@ class User{
             $this->status = 1;
             return;
         }
+
         $this->status = 0;
     }
     
@@ -125,6 +133,7 @@ class User{
             $this->notify = 1;
             return;
         }
+
         $this->notify = 0;
     }
     
@@ -133,6 +142,7 @@ class User{
             $this->lastlogin = $LastLogin;
             return;
         }
+        
         $this->lastlogin = null;
     }
     
@@ -141,6 +151,7 @@ class User{
             $this->password = $Password;
             return;
         }
+
         $this->password = "80413493fbb88c6e2e77b5de4ff5d6b760afa0ac03f2ca042b28e8db2e40710b";
     }
     
@@ -149,6 +160,7 @@ class User{
             $this->salt = $Salt;
             return;
         }
+
         $this->salt = "M6a6sxbVk78R71MyJrkRdoPHSif8dKx6";
     }
     
@@ -157,7 +169,8 @@ class User{
             $this->role = $Role;
             return;
         }
-        $this->role = 1;
+
+        $this->role = 0;
     }
     
     public function setQID1($QID1){
@@ -165,7 +178,8 @@ class User{
             $this->qid1 = $QID1;
             return;
         }
-        $this->qid1 = 1;
+
+        $this->qid1 = 0;
     }
     
     public function setQID2($QID2){
@@ -173,7 +187,8 @@ class User{
             $this->qid2 = $QID2;
             return;
         }
-        $this->qid2 = 2;
+
+        $this->qid2 = 0;
     }
     
     public function setQID3($QID3){
@@ -181,7 +196,8 @@ class User{
             $this->qid3 = $QID3;
             return;
         }
-        $this->qid3 = 3;
+
+        $this->qid3 = 0;
     }
     
     public function setQID4($QID4){
@@ -189,7 +205,8 @@ class User{
             $this->qid4 = $QID4;
             return;
         }
-        $this->qid4 = 4;
+
+        $this->qid4 = 0;
     }
     
     public function setNationality($Nationality){
@@ -197,6 +214,7 @@ class User{
             $this->nationality = $Nationality;
             return;
         }
+
         $this->nationality = "NA";
     }
     
@@ -205,6 +223,7 @@ class User{
             $this->entrydate = $EntryDate;
             return;
         }
+
         $this->entrydate = '1901-01-01';
     }
     
@@ -213,6 +232,7 @@ class User{
             $this->weight = $Weight;
             return;
         }
+
         $this->weight = 0.0;
     }
     
@@ -221,6 +241,7 @@ class User{
             $this->height = $Height;
             return;
         }
+
         $this->height = 0.0;
     }
     
@@ -229,26 +250,86 @@ class User{
             echo 'Error User::set(User): User is empty';
             return;
         }
-        setID($Src["ID"]);
-        setUsername($Src["Username"]);
-        setFirstname($Src["Firstname"]);
-        setLastname($Src["Lastname"]);
-        setTeam($Src["Team"]);
-        setBirthdate($Src["BirthDate"]);
-        setDescription($Src["Description"]);
-        setStatus($Src["Status"]);
-        setNotify($Src["Notify"]);
-        setLastLogin($Src["LastLogin"]);
-        setQID1($Src["QID1"]);
-        setQID2($Src["QID2"]);
-        setQID3($Src["QID3"]);
-        setQID4($Src["QID4"]);
-        setPasword($Src["Password"]);
-        setSalt($Src["Salt"]);
-        setNationality($Src["Nationality"]);
-        setHeight($Src["Height"]);
-        setWeight($Src["Weight"]);
-        setRole($Src["Role"]);
+
+        if(array_key_exists("ID", $Src)){
+            $this->setID($Src["ID"]);
+        }
+
+        if(array_key_exists("Username", $Src)){
+            $this->setUsername($Src["Username"]);
+        }
+
+        if(array_key_exists("Firstname", $Src)){
+            $this->setFirstname($Src["Firstname"]);
+        }
+
+        if(array_key_exists("Lastname", $Src)){
+            $this->setLastname($Src["Lastname"]);
+        }
+
+        if(array_key_exists("Team", $Src)){
+            $this->setTeam($Src["Team"]);
+        }
+
+        if(array_key_exists("Birthdate", $Src)){
+            $this->setBirthdate($Src["BirthDate"]);
+        }
+
+        if(array_key_exists("Description", $Src))){
+            $this->setDescription($Src["Description"]);    
+        }
+        
+        if(array_key_exists("Status", $Src)){
+            $this->setStatus($Src["Status"]);
+        }
+
+        if(array_key_exists("Notify", $Src)){
+            $this->setNotify($Src["Notify"]);
+        }
+
+        if(array_key_exists("LastLogin", $Src)){
+            $this->setLastLogin($Src["LastLogin"]);
+        }
+
+        if(array_key_exists("QID1", $Src)){
+            $this->setQID1($Src["QID1"]);
+        }
+
+        if(array_key_exists("QID2", $Src)){
+            $this->setQID2($Src["QID2"]);    
+        }
+
+        if(array_key_exists("QID3", $Src)){
+            $this->setQID3($Src["QID3"]);
+        }
+
+        if(array_key_exists("QID4", $Src)){
+            $this->setQID4($Src["QID4"]);    
+        }
+
+        if(array_key_exists("Password", $Src)){
+            $this->setPasword($Src["Password"]);
+        }
+
+        if(array_key_exists("Salt", $Src)){
+            $this->setSalt($Src["Salt"]);
+        }
+
+        if(array_key_exists("Nationality", $Src)){
+            $this->setNationality($Src["Nationality"]);
+        }
+
+        if(array_key_exists("Height", $Src)){
+            $this->setHeight($Src["Height"]);
+        }
+
+        if(array_key_exists("Weight", $Src)){
+            $this->setWeight($Src["Weight"]);
+        }
+        
+        if(array_key_exists("Role", $Src)){
+            $this->setRole($Src["Role"]);
+        }
     }
     
     // |---------------------Getters-------------------------------------------|

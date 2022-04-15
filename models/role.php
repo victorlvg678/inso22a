@@ -18,6 +18,7 @@ class Role{
             $this->id = $ID;
             return;
         }
+
         $this->id = 0;
     }
     
@@ -26,6 +27,7 @@ class Role{
             $this->en = $EN;
             return;
         }
+
         $this->en = "NA";
     }
     
@@ -34,6 +36,7 @@ class Role{
             $this->es = $ES;
             return;
         }
+
         $this->es = "NA";
     }
     
@@ -42,6 +45,7 @@ class Role{
             $this->cod = $COD;
             return;
         }
+
         $this->cod = "NA";
     }
     
@@ -50,10 +54,22 @@ class Role{
             echo "Error Role::set(Role): Role is empty";
             return;
         }
-        setID($Src["ID"]);
-        setCOD($Src["COD"]);
-        setEN($Src["EN"]);
-        setES($Src["Es"]);
+
+        if(array_key_exists("ID", $Src)){
+            $this->setID($Src["ID"]);
+        }
+
+        if(array_key_exists("COD", $Src)){
+            $this->setCOD($Src["COD"]);
+        }
+
+        if(array_key_exists("EN", $Src)){
+            $this->setEN($Src["EN"]);    
+        }
+        
+        if(array_key_exists("ES", $Src)){
+            $this->setES($Src["ES"]);
+        }
     }
     
     // |------------------------Getters----------------------------------------|
