@@ -1,5 +1,6 @@
 <?php
 require_once('../connection/db.php');
+require_once('../models/secquestion.php');
 
 class MYSQLSecQuestion{
     private $conn;

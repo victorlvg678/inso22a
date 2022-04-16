@@ -1,0 +1,90 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "INSO22A"
+    },
+    "host": "localhost:80",
+    "schemes": ["http", "https"],
+    "paths": {
+        "/api/teams.php": {
+            "get": {
+                "tags": "Team",
+                "summary": "Get all teams",
+                "operationId" : "Team_getAll",
+                "consumes": [],
+                "produces": ["application/json", "text/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TeamReadDTO"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "TeamReadDTO": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of team"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Team's name"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State where team is located"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "City where team is located"
+                },
+                "district": {
+                    "type": "string",
+                    "description": "District where team is located"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Street's name, and number of location of team"
+                },
+                "coach": {
+                    "type": "integer",
+                    "description": "ID of team's coach"
+                },
+                "matches": {
+                    "type": "integer",
+                    "description": "Team's total matches "
+                },
+                "won": {
+                    "type": "integer",
+                    "description": "Team's total wins"
+                },
+                "lost": {
+                    "type": "integer",
+                    "description": "Team's total loses"
+                }
+            }
+        }
+    }
+}

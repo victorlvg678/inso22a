@@ -93,7 +93,7 @@ class MYSQLYUser{
     }
 
     public function getByTeam($Team){
-        $query = "SELECT * FROM Users WHERE Team = (SELECT * FROM Team WHERE Name LIKE ?) ORDER BY ID ASC";
+        $query = "SELECT * FROM Users WHERE Team = (SELECT ID FROM Team WHERE Name LIKE ? ORDER BY ID ASC LIMIT 0, 0)";
         
         $Lastname = '%' . $Team . '%';
         $stmt = $conn->prepare($query);

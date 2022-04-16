@@ -72,6 +72,23 @@ class JSON{
                         $object = Array();
                         break;
                     }
+
+                case "MatchReadDTO":
+                    {
+                        $object["id"] = $Src[$x]->getID();
+                        $object["matchdate"] = $Src[$x]->getMatchDate();
+                        $object["matchtime"] = $Src[$x]->getMatchTime();
+                        $object["team1"] = $Src[$x]->getTeam1();
+                        $object["team2"] = $Src[$x]->getTeam2();
+                        $object["score1"] = $Src[$x]->getScore1();
+                        $object["score2"] = $Src[$x]->getScore2();
+                        $object["duration"] = $Src[$x]->getDuration();
+                        $object["location"] = $Src[$x]->getLocation();
+
+                        array_push($objects, $object);
+                        $object = Array();
+                        break;
+                    }
             }
         }
         

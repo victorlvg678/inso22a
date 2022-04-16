@@ -7,6 +7,8 @@ require_once("../models/role.php");
 require_once("../dtos/rolereaddto.php");
 require_once("../models/secquestion.php");
 require_once("../dtos/secquestionreaddto.php");
+require_once("../models/match.php");
+require_once("../dtos/matchreaddto.php");
 class Mapper{
     private $src;
     private $dst;
@@ -122,6 +124,28 @@ class Mapper{
                 }
                 break;
             }
+
+            case "Match":
+                {
+                    switch(get_class($this->dst)){
+                        case "MatchReadDTO":
+                            {
+                                $Obj = new MatchReadDTO();
+                                $Obj->setID($this->src->getID());
+                                $Obj->setMatchDate($this->src->getMatchDate());
+                                $Obj->setMatchTime($this->src->getMatchTime());
+                                $Obj->setTeam1($this->src->getTeam1());
+                                $Obj->setTeam2($this->src->getTeam2());
+                                $Obj->setScore1($this->src->getScore1());
+                                $Obj->setScore2($this->src->getScore2());
+                                $Obj->setDuration($this->src->getDuration());
+                                $Obj->setLocation($this->src->getLocation());
+
+                                return $Obj;
+                            }
+                    }
+                    break;
+                }
         }
     }
     
