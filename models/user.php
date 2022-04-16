@@ -310,7 +310,7 @@ class User{
             $this->setBirthdate($Src["BirthDate"]);
         }
 
-        if(array_key_exists("Description", $Src))){
+        if(array_key_exists("Description", $Src)){
             $this->setDescription($Src["Description"]);    
         }
         
