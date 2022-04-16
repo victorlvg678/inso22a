@@ -5,6 +5,7 @@ require_once('../classes/json.php');
 require_once('../models/team.php');
 require_once('../dtos/teamreaddto.php');
 require_once('../classes/apierror.php');
+
 class TeamController{
     private $repo;
     

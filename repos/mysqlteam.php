@@ -1,6 +1,7 @@
 <?php
 require_once('../connection/db.php');
 require_once('../models/team.php');
+
 class MYSQLTeam{
     private $conn;
     
@@ -73,7 +74,7 @@ class MYSQLTeam{
     }
     
     public function getByCity($City){
-        $query = "SELECT * FROM Team WHERE State LIKE ? ORDER BY ID ASC";
+        $query = "SELECT * FROM Team WHERE City LIKE ? ORDER BY ID ASC";
 
         $City = '%' . $City . '%';
         $stmt = $this->conn->prepare($query);

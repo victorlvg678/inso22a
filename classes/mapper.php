@@ -60,6 +60,31 @@ class Mapper{
                 }
                 break;
             }
+
+            case "User":{
+                switch(get_class($this->dst)){
+                    case "UserReadDTO":{
+                      $Obj = new UserReadDTO();
+                      $Obj->setID($this->src->getID());
+                      $Obj->setUsername($this->src->getUsername());
+                      $Obj->setFirstname($this->src->getFirstname());
+                      $Obj->setLastname($this->src->getLastname());
+                      $Obj->setTeam($this->src->getTeam());
+                      $Obj->setBirthDate($this->src->getBirthDate());
+                      $Obj->setDescription($this->src->getDescription());
+                      $Obj->setStatus($this->src->getStatus());
+                      $Obj->setRole($this->src->getRole());
+                      $Obj->setLastLogin($this->src->getLastLogin());
+                      $Obj->setNationality($this->src->getNationality());
+                      $Obj->setEntryDate($this->src->getEntryDate());
+                      $Obj->setWeight($this->src->getWeight());
+                      $Obj->setHeight($this->src->getHeight());
+                      
+                      return $Obj;
+                    }
+                }
+                break;
+            }
         }
     }
     

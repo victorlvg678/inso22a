@@ -1,82 +1,130 @@
 <?php 
-require_once('../connection/db.php');
+require_once('../repos/mysqluser.php');
+require_once('../classes/mapper.php');
+require_once('../classes/json.php');
+require_once('../models/user.php');
+require_once('../dtos/userreaddto.php');
+require_once('../classes/apierror.php');
+
 class UserController{
-    
+    private $repo;
+
     public function __construct(){
-        
+        $this->repo = new MYSQLUser();    
     }
     
-    public function getById($ID){
-        $db = new DB();
-        $conn = $db->Connect();
-        $query = 'SELECT * FROM Users WHERE ID = ?';
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('i', $ID);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_all(MYSQLI_ASSOC);
-        return json_encode($user);
+    public function getByID($ID){
+        $items = $this->repo->getByID($ID);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $user = Array();
+        $mapper = new Mapper();
+        $mapper->setDst(new UserReadDTO());
+        $JSON = new JSON();
+        $mapper->setSrc($items[0]);
+        array_push($user, $mapper->Map());
+
+        return json_encode($JSON->Parse($user));
     }
     
     public function getByUsername($Username){
-        $db = new DB();
-        $conn = $db->Connect();
-        $query = 'SELECT * FROM Users WHERE Username = ?';
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $Username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_all(MYSQLI_ASSOC);
-        return json_encode($user);
+        $items = $this->repo->getByUsername($Username);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $user = Array();
+        $mapper = new Mapper();
+        $JSON = new JSON();
+        $mapper->setDst(new UserReadDTO());
+        $mapper->setSrc($items[0]);
+        array_push($user, $mapper->Map());
+
+        return json_encode($JSON->Parse($user));
     }
     
     public function getByFirstname($Firstname){
-        $db = new DB();
-        $conn = $db->Connect();
-        $query = "SELECT * FROM Users WHERE Firstname LIKE ? ORDER BY ID ASC";
-        $Firstname = '%' . $Firstname . '%';
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $Firstname);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $users = $result->fetch_all(MYSQLI_ASSOC);
-        return json_encode($users);
+        $items = $this->repo->getByFirstname($Firstname);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $users = Array();
+        $mapper = new Mapper();
+        $JSON = new JSON();
+        $mapper->setDst(new UserReadDTO());
+
+        for($x = 0; $x < count($items); $x++){
+            $mapper->setSrc($items[$x]);
+            array_push($users, $mapper->Map());
+        }
+
+        return json_encode($JSON->Parse($users));
     }
     
     public function getByLastname($Lastname){
-        $db = new DB();
-        $conn = $db->Connect();
-        $query = "SELECT * FROM Users WHERE Lastname LIKE ? ORDER BY ID ASC";
-        $Lastname = '%' . $Lastname . '%';
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $Lastname);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $users = $result->fetch_all(MYSQLI_ASSOC);
-        return json_encode($users);
+        $items = $this->repo->getByLastname($Lastname);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+        
+        $users = Array();
+        $mapper = new Mapper();
+        $JSON = new JSON();
+        $mapper->setDst(new UserReadDTO());
+
+        for($x = 0; $x < count($items); $x++){
+            $mapper->setSrc($items[$x]);
+            array_push($users, $mapper->Map());
+        }
+        
+        return json_encode($JSON->Parse($users));
     }
     
     public function getByTeam($Team){
-        $db = new DB();
-        $conn = $db->Connect();
-        $query = "SELECT * FROM Users WHERE Team = ? ORDER BY ID ASC";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('i', $Team);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $users = $result->fetch_all(MYSQLI_ASSOC);
-        return json_encode($users);
+        $items = $this->repo->getByTeam($Team);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $users = Array();
+        $mapper = new Mapper();
+        $JSON = new JSON();
+        $mapper->setDst(new UserReadDTO());
+
+        for($x = 0; $x < count($items); $x++){
+            $mapper->setSrc($items[$x]);
+            array_push($users, $mapper->Map());
+        }
+
+        return json_encode($JSON->Parse($users));
     }
     
     public function getAll(){
-        $db = new DB();
-        $conn = $db->Connect();
-        $query = 'SELECT * FROM Users';
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_all(MYSQLI_ASSOC);
-        return json_encode($user);
+        $items = $this->repo->getAll();
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+
+        $users = Array();
+        $mapper = new Mapper();
+        $JSON =  new JSON();
+        $mapper->setDst(new UserReadDTO());
+
+        for($x = 0; $x < count($items); $x++){
+            $mapper->setSrc($items[$x]);
+            array_push($users, $mapper->Map());
+        }
+
+        return json_encode($JSON->Parse($users));
     }
 }    
 ?>

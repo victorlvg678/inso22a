@@ -11,16 +11,6 @@ class JSON{
 
         for($x = 0; $x < $no_objects; $x++){
             switch(get_class($Src[$x])){
-                case "Team":
-                    {
-                        $object["id"] = $Src[$x]->getID();
-                        $object["name"] = $Src[$x]->getName();
-
-                        array_push($objects, $object);
-                        $object = Array();
-                        break;
-                    }
-
                 case "TeamReadDTO":
                     {
                         $object["id"] = $Src[$x]->getID();
@@ -33,6 +23,27 @@ class JSON{
                         $object["won"] = $Src[$x]->getWon();
                         $object["lost"] = $Src[$x]->getLost();
                         $object["coach"] = $Src[$x]->getCoach();
+
+                        array_push($objects, $object);
+                        $object = Array();
+                        break;
+                    }
+                case "UserReadDTO":
+                    {
+                        $object["id"] = $Src[$x]->getID();
+                        $object["username"] = $Src[$x]->getUsername();
+                        $object["firstname"] = $Src[$x]->getFirstname();
+                        $object["lastname"] = $Src[$x]->getLastname();
+                        $object["team"] = $Src[$x]->getTeam();
+                        $object["birthdate"] = $Src[$x]->getBirthDate();
+                        $object["description"] = $Src[$x]->getDescription();
+                        $object["status"] = $Src[$x]->getStatus();
+                        $object["role"] = $Src[$x]->getRole();
+                        $object["lastlogin"] = $Src[$x]->getLastLogin();
+                        $object["nationality"] = $Src[$x]->getNationality();
+                        $object["entrydate"] = $Src[$x]->getEntryDate();
+                        $object["weight"] = $Src[$x]->getWeight();
+                        $object["height"] = $Src[$x]->getHeight();
 
                         array_push($objects, $object);
                         $object = Array();
