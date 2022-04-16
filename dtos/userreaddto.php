@@ -162,7 +162,7 @@ class UserReadDTO{
     
     public function set($Src){
         if(!empty($Src)){
-            echo 'Error User::set(User): User is empty';
+            echo 'Error UserReadDTO::set(Src): Object is empty';
             return;
         }
 

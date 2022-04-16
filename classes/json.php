@@ -49,6 +49,18 @@ class JSON{
                         $object = Array();
                         break;
                     }
+
+                case "RoleReadDTO":
+                    {
+                        $object["id"] = $Src[$x]->getID();
+                        $object["code"] = $Src[$x]->getCode();
+                        $object["en"] = $Src[$x]->getEN();
+                        $object["es"] = $Src[$x]->getES();
+
+                        array_push($objects, $object);
+                        $object = Array();
+                        break;
+                    }
             }
         }
         

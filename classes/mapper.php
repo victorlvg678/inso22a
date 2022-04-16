@@ -85,6 +85,21 @@ class Mapper{
                 }
                 break;
             }
+
+            case "Role":{
+                switch(get_class($this->dst)){
+                    case "RoleReadDTO":{
+                        $Obj = new RoleReadDTO();
+                        $Obj->setID($this->src->getID());
+                        $Obj->setCode($this->src->getCode());
+                        $Obj->setEN($this->src->getEN());
+                        $Obj->setES($this->src->getES());
+
+                        return $Obj;
+                    }
+                }
+                break;
+            }
         }
     }
     
