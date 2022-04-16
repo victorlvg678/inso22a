@@ -1,6 +1,12 @@
 <?php
 require_once("../models/team.php");
 require_once("../dtos/teamreaddto.php");
+require_once("../models/user.php");
+require_once("../dtos/userreaddto.php");
+require_once("../models/role.php");
+require_once("../dtos/rolereaddto.php");
+require_once("../models/secquestion.php");
+require_once("../dtos/secquestionreaddto.php");
 class Mapper{
     private $src;
     private $dst;
@@ -97,6 +103,22 @@ class Mapper{
 
                         return $Obj;
                     }
+                }
+                break;
+            }
+
+            case "SecQuestion":
+                {
+                switch(get_class($this->dst)){
+                    case "SecQuestionReadDTO":
+                        {
+                            $Obj = new SecQuestionReadDTO();
+                            $Obj->setID($this->src->getID());
+                            $Obj->setEN($this->src->getEN());
+                            $Obj->setES($this->src->getES());
+
+                            return $Obj;
+                        }
                 }
                 break;
             }

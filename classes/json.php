@@ -61,6 +61,17 @@ class JSON{
                         $object = Array();
                         break;
                     }
+
+                case "SecQuestionReadDTO":
+                    {
+                        $object["id"] = $Src[$x]->getID();
+                        $object["en"] = $Src[$x]->getEN();
+                        $object["es"] = $Src[$x]->getES();
+
+                        array_push($objects, $object);
+                        $object = Array();
+                        break;
+                    }
             }
         }
         
