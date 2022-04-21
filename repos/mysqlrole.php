@@ -109,6 +109,20 @@ class MYSQLRole{
 
         return $roles;
     }
+
+    public function createRole($Role){
+        $query = 'INSERT INTO Role(ID, COD, EN, ES) VALUES (?, ?, ?, ?)';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('isss', $Role->getID(), $Role->getCode(), $Role->getEN(), $Role->getES());
+
+        $roles = Array();
+        if($stmt->execute()){
+            array_push($roles, $Role);
+        }
+
+        return $roles;
+    }
 }
 
 ?>

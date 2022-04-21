@@ -3,6 +3,7 @@ require_once('../repos/mysqlteam.php');
 require_once('../classes/mapper.php');
 require_once('../classes/json.php');
 require_once('../models/team.php');
+require_once('../dtos/teamcreatedto.php');
 require_once('../dtos/teamreaddto.php');
 require_once('../classes/apierror.php');
 
@@ -227,6 +228,26 @@ class TeamController{
             array_push($teams, $mapper->Map());
         }
         
+        return json_encode($JSON->Parse($teams));
+    }
+
+    public function createTeam($Src){
+        $JSON = new JSON();
+        $team = $JSON->ToObject($Src, new TeamCreateDTO());
+        $mapper = new Mapper();
+        $mapper->setSrc($team);
+        $mapper->setDst(new Team());
+
+        $result = $this->repo->createTeam($mapper->Map());
+
+        $mapper->setDst(new TeamReadDTO());
+        $teams = Array();
+        for($x = 0; $x < count($result); $x++)
+        {
+            $mapper->setSrc($result[$x]);
+            array_push($teams, $mapper->Map());
+        }
+
         return json_encode($JSON->Parse($teams));
     }
 }

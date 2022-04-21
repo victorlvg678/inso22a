@@ -37,6 +37,49 @@
                         "description": "Not found"
                     }
                 }
+            },
+            "post": {
+                "tags": [ "Team" ],
+                "summary": "Create new team",
+                "operationId": "Team_createTeam",
+                "consumes": [ "application/json", "text/json" ],
+                "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TeamReadDTO"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "team",
+                        "in": "body",
+                        "description": "Team to be created",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/TeamCreateDTO"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "/INSO22A/api/teams.php?id={id}": {
@@ -479,6 +522,49 @@
                         "description": "Not found"
                     }
                 }
+            },
+            "post": {
+                "tags": [ "Role" ],
+                "summary": "Create new role",
+                "operationId": "Role_createRole",
+                "consumes": [ "application/json", "text/json" ],
+                "produces": [ "application/json", "text/json" ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoleReadDTO"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "body",
+                        "description": "Role to be created",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/RoleCreateDTO"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "/INSO22A/api/roles.php?id={id}": {
@@ -1440,6 +1526,47 @@
         }
     },
     "definitions": {
+        "TeamCreateDTO": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Team's name"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State where team is located"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "City where team is located"
+                },
+                "district": {
+                    "type": "string",
+                    "description": "District where team is located"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Street's name, and number of location of team"
+                },
+                "matches": {
+                    "type": "integer",
+                    "description": "Team's total matches "
+                },
+                "won": {
+                    "type": "integer",
+                    "description": "Team's total wins"
+                },
+                "lost": {
+                    "type": "integer",
+                    "description": "Team's total loses"
+                },
+                "coach": {
+                    "type": "integer",
+                    "description": "ID of team's coach"
+                }
+            }
+        },
         "TeamReadDTO": {
             "type": "object",
             "properties": {
@@ -1482,6 +1609,27 @@
                 "lost": {
                     "type": "integer",
                     "description": "Team's total loses"
+                }
+            }
+        },
+        "RoleCreateDTO": {
+            "type" : "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Role's ID"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Role's code"
+                },
+                "en": {
+                    "type": "string",
+                    "description": "Role's name in English"
+                },
+                "es": {
+                    "type": "string",
+                    "description": "Role's name in Spanish"
                 }
             }
         },

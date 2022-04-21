@@ -1,9 +1,11 @@
 <?php
 require_once("../models/team.php");
+require_once("../dtos/teamcreatedto.php");
 require_once("../dtos/teamreaddto.php");
 require_once("../models/user.php");
 require_once("../dtos/userreaddto.php");
 require_once("../models/role.php");
+require_once("../dtos/rolecreatedto.php");
 require_once("../dtos/rolereaddto.php");
 require_once("../models/secquestion.php");
 require_once("../dtos/secquestionreaddto.php");
@@ -68,6 +70,24 @@ class Mapper{
                 }
                 break;
             }
+            case "TeamCreateDTO":{
+                switch(get_class($this->dst)){
+                    case "Team": {
+                        $Obj = new Team();
+                        $Obj->setName($this->src->getName());
+                        $Obj->setState($this->src->getState());
+                        $Obj->setCity($this->src->getCity());
+                        $Obj->setDistrict($this->src->getDistrict());
+                        $Obj->setLocation($this->src->getLocation());
+                        $Obj->setMatches($this->src->getMatches());
+                        $Obj->setWon($this->src->getWon());
+                        $Obj->setLost($this->src->getLost());
+                        $Obj->setCoach($this->src->getCoach());
+
+                        return $Obj;
+                    }
+                }
+            }
 
             case "User":{
                 switch(get_class($this->dst)){
@@ -98,6 +118,21 @@ class Mapper{
                 switch(get_class($this->dst)){
                     case "RoleReadDTO":{
                         $Obj = new RoleReadDTO();
+                        $Obj->setID($this->src->getID());
+                        $Obj->setCode($this->src->getCode());
+                        $Obj->setEN($this->src->getEN());
+                        $Obj->setES($this->src->getES());
+
+                        return $Obj;
+                    }
+                }
+                break;
+            }
+
+            case "RoleCreateDTO":{
+                switch(get_class($this->dst)){
+                    case "Role":{
+                        $Obj = new Role();
                         $Obj->setID($this->src->getID());
                         $Obj->setCode($this->src->getCode());
                         $Obj->setEN($this->src->getEN());

@@ -226,5 +226,21 @@ class MYSQLTeam{
         
         return $teams;
     }
+
+    public function createTeam($Team){
+        $query = 'INSERT INTO Team(Name, State, City, District, Location, Matches, Won, Lost, Coach) VALUES(?, ?, ? ,? ,?, ?, ?, ?, ?)';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('sssssiiii', $Team->getName(), $Team->getState(),
+        $Team->getCity(), $Team->getDistrict(), $Team->getLocation(), $Team->getMatches(),
+        $Team->getWon(), $Team->getLost(), $Team->getCoach());
+    
+        $teams = Array();
+        if($stmt->execute()){
+            array_push($teams, $Team);
+        };
+
+        return $teams;
+    }
 }
 ?>

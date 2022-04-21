@@ -1,4 +1,7 @@
 <?php
+require_once('../dtos/teamcreatedto.php');
+require_once('../dtos/rolecreatedto.php');
+
 class JSON{
     public function __construct(){
         
@@ -93,6 +96,36 @@ class JSON{
         }
         
         return $objects;
+    }
+
+
+    public function ToObject($Src, $Object){
+        switch(get_class($Object)){
+            case "TeamCreateDTO":{
+                $Obj = new TeamCreateDTO();
+                $Obj->setName($Src["name"]);
+                $Obj->setState($Src["state"]);
+                $Obj->setCity($Src["city"]);
+                $Obj->setDistrict($Src["district"]);
+                $Obj->setLocation($Src["location"]);
+                $Obj->setMatches($Src["matches"]);
+                $Obj->setWon($Src["won"]);
+                $Obj->setLost($Src["lost"]);
+                $Obj->setCoach($Src["coach"]);
+
+                return $Obj;
+            }
+
+            case "RoleCreateDTO":{
+                $Obj = new RoleCreateDTO();
+                $Obj->setID($Src["id"]);
+                $Obj->setCode($Src["code"]);
+                $Obj->setEN($Src["en"]);
+                $Obj->setES($Src["es"]);
+
+                return $Obj;
+            }
+        }
     }
 }
 ?>

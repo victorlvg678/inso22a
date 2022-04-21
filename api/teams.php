@@ -2,106 +2,116 @@
 require_once('../controllers/teamcontroller.php');
 $Controller = new TeamController();
 
-if(isset($_GET['id'])){
-    if(!is_numeric($_GET['id'])){
-        echo 'Error: id must be integer';
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+    if(isset($_GET['id'])){
+        if(!is_numeric($_GET['id'])){
+            echo 'Error: id must be integer';
+            return;
+        }
+
+        echo $Controller->getByID($_GET['id']);
         return;
     }
 
-    echo $Controller->getByID($_GET['id']);
-    return;
-}
+    if(isset($_GET['name'])){
+        if(empty($_GET['name'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
 
-if(isset($_GET['name'])){
-    if(empty($_GET['name'])){
-        echo 'Error: value cannot be null';
+        echo $Controller->getByName($_GET['name']);
         return;
     }
 
-    echo $Controller->getByName($_GET['name']);
-    return;
-}
+    if(isset($_GET['state'])){
+        if(empty($_GET['state'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
 
-if(isset($_GET['state'])){
-    if(empty($_GET['state'])){
-        echo 'Error: value cannot be null';
+        echo $Controller->getByState($_GET['state']);
         return;
     }
 
-    echo $Controller->getByState($_GET['state']);
-    return;
-}
+    if(isset($_GET['city'])){
+        if(empty($_GET['city'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
 
-if(isset($_GET['city'])){
-    if(empty($_GET['city'])){
-        echo 'Error: value cannot be null';
+        echo $Controller->getByCity($_GET['city']);
         return;
     }
 
-    echo $Controller->getByCity($_GET['city']);
-    return;
-}
+    if(isset($_GET['district'])){
+        if(empty($_GET['district'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
 
-if(isset($_GET['district'])){
-    if(empty($_GET['district'])){
-        echo 'Error: value cannot be null';
+        echo $Controller->getByDistrict($_GET['district']);
         return;
     }
 
-    echo $Controller->getByDistrict($_GET['district']);
-    return;
-}
+    if(isset($_GET['location'])){
+        if(empty($_GET['location'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
 
-if(isset($_GET['location'])){
-    if(empty($_GET['location'])){
-        echo 'Error: value cannot be null';
+        echo $Controller->getByLocation($_GET['location']);
         return;
     }
 
-    echo $Controller->getByLocation($_GET['location']);
-    return;
-}
+    if(isset($_GET['matches'])){
+        if(!is_numeric($_GET['matches'])){
+            echo 'Error: matches must be integer';
+            return;
+        }
 
-if(isset($_GET['matches'])){
-    if(!is_numeric($_GET['matches'])){
-        echo 'Error: matches must be integer';
+        echo $Controller->getByMatches($_GET['matches']);
         return;
     }
 
-    echo $Controller->getByMatches($_GET['matches']);
-    return;
-}
+    if(isset($_GET['won'])){
+        if(!is_numeric($_GET['won'])){
+            echo 'Error: won must be integer';
+            return;
+        }
 
-if(isset($_GET['won'])){
-    if(!is_numeric($_GET['won'])){
-        echo 'Error: won must be integer';
+        echo $Controller->getByWon($_GET['won']);
         return;
     }
 
-    echo $Controller->getByWon($_GET['won']);
-    return;
-}
+    if(isset($_GET['lost'])){
+        if(!is_numeric($_GET['lost'])){
+            echo 'Error: lost must be integer';
+            return;
+        }
 
-if(isset($_GET['lost'])){
-    if(!is_numeric($_GET['lost'])){
-        echo 'Error: lost must be integer';
+        echo $Controller->getByLost($_GET['lost']);
         return;
     }
 
-    echo $Controller->getByLost($_GET['lost']);
-    return;
-}
-
-if(isset($_GET['coach'])){
-    if(empty($_GET['coach'])){
-        echo 'Error: value cannot be null';
+    if(isset($_GET['coach'])){
+        if(empty($_GET['coach'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
+        
+        echo $Controller->getByCoach($_GET['coach']);
         return;
     }
-    
-    echo $Controller->getByCoach($_GET['coach']);
+
+    echo $Controller->getAll();
     return;
 }
 
-echo $Controller->getAll();
-    
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $json = file_get_contents('php://input');
+
+    echo $Controller->createTeam(json_decode($json, true));
+    return;
+}
+
 ?>

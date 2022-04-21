@@ -3,6 +3,7 @@ require_once('../repos/mysqlrole.php');
 require_once('../classes/mapper.php');
 require_once('../classes/json.php');
 require_once('../models/role.php');
+require_once('../dtos/rolecreatedto.php');
 require_once('../dtos/rolereaddto.php');
 require_once('../classes/apierror.php');
 
@@ -104,6 +105,25 @@ class RoleController{
             array_push($roles, $mapper->Map());
         }
 
+        return json_encode($JSON->Parse($roles));
+    }
+
+    public function createRole($Src){
+        $JSON = new JSON();
+        $role = $JSON->ToObject($Src, new RoleCreateDTO());
+        $mapper = new Mapper();
+        $mapper->setSrc($role);
+        $mapper->setDst(new Role());
+
+        $result = $this->repo->createRole($mapper->Map());
+
+        $mapper->setDst(new RoleReadDTO());
+        $roles = Array();
+        for($x = 0; $x < count($result); $x++){
+            $mapper->setSrc($result[$x]);
+            array_push($roles, $mapper->Map());
+        }
+        
         return json_encode($JSON->Parse($roles));
     }
 }
