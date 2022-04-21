@@ -1,5 +1,5 @@
 <?php
-class SecQuestion{
+class SecQuestionCreateDTO{
     private $id;
     private $en;
     private $es;
@@ -44,8 +44,8 @@ class SecQuestion{
     }
     
     public function set($Src){
-        if(empty($Src)){
-            echo "Error SecQuestion::set(SecQuestion): SecQuestion is empty";
+        if(!empty($Src)){
+            echo "Error SecQuestionCreateDTO::set(Src): Object is empty";
             return;
         }
 

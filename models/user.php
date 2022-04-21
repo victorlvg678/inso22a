@@ -281,7 +281,7 @@ class User{
     }
     
     public function set($Src){
-        if(!empty($Src)){
+        if(empty($Src)){
             echo 'Error User::set(User): User is empty';
             return;
         }

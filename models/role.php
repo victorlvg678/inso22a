@@ -50,7 +50,7 @@ class Role{
     }
     
     public function set($Src){
-        if(!empty($Src)){
+        if(empty($Src)){
             echo "Error Role::set(Role): Role is empty";
             return;
         }

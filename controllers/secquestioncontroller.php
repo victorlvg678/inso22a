@@ -3,6 +3,7 @@ require_once('../repos/mysqlsecquestion.php');
 require_once('../classes/mapper.php');
 require_once('../classes/json.php');
 require_once('../models/secquestion.php');
+require_once('../dtos/secquestioncreatedto.php');
 require_once('../dtos/secquestionreaddto.php');
 require_once('../classes/apierror.php');
 
@@ -88,6 +89,25 @@ class SecQuestionController{
             array_push($secquestions, $mapper->Map());
         }
 
+        return json_encode($JSON->Parse($secquestions));
+    }
+
+    public function createSecQuestion($Src){
+        $JSON = new JSON();
+        $secquestion = $JSON->ToObject($Src, new SecQuestionCreateDTO());
+        $mapper = new Mapper();
+        $mapper->setSrc($secquestion);
+        $mapper->setDst(new SecQuestion());
+
+        $result = $this->repo->createSecQuestion($mapper->Map());
+
+        $mapper->setDst(new SecQuestionReadDTO());
+        $secquestions = Array();
+        for($x = 0; $x < count($result); $x++){
+            $mapper->setSrc($result[$x]);
+            array_push($secquestions, $mapper->Map());
+        }
+        
         return json_encode($JSON->Parse($secquestions));
     }
 }

@@ -90,5 +90,20 @@ class MYSQLSecQuestion{
 
         return $secquestions;
     }
+
+    public function createSecQuestion($SecQuestion){
+        $query = 'INSERT INTO SecQuestion(ID, EN, ES) VALUES (?, ?, ?)';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('iss', $SecQuestion->getID(), $SecQuestion->getEN(),
+        $SecQuestion->getES());
+
+        $secquestions = Array();
+        if($stmt->execute()){
+            array_push($secquestions, $SecQuestion);
+        }
+
+        return $secquestions;
+    }
 }
 ?>

@@ -111,7 +111,7 @@ class MYSQLRole{
     }
 
     public function createRole($Role){
-        $query = 'INSERT INTO Role(ID, COD, EN, ES) VALUES (?, ?, ?, ?)';
+        $query = 'INSERT INTO Role(ID, Code, EN, ES) VALUES (?, ?, ?, ?)';
 
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param('isss', $Role->getID(), $Role->getCode(), $Role->getEN(), $Role->getES());

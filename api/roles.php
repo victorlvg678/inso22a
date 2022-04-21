@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         return;
     }
 
-    echo $controller->getAll();
+    echo $Controller->getAll();
     return;
 }
 

@@ -8,6 +8,7 @@ require_once("../models/role.php");
 require_once("../dtos/rolecreatedto.php");
 require_once("../dtos/rolereaddto.php");
 require_once("../models/secquestion.php");
+require_once("../dtos/secquestioncreatedto.php");
 require_once("../dtos/secquestionreaddto.php");
 require_once("../models/match.php");
 require_once("../dtos/matchreaddto.php");
@@ -150,6 +151,22 @@ class Mapper{
                     case "SecQuestionReadDTO":
                         {
                             $Obj = new SecQuestionReadDTO();
+                            $Obj->setID($this->src->getID());
+                            $Obj->setEN($this->src->getEN());
+                            $Obj->setES($this->src->getES());
+
+                            return $Obj;
+                        }
+                }
+                break;
+            }
+
+            case "SecQuestionCreateDTO":
+                {
+                switch(get_class($this->dst)){
+                    case "SecQuestion":
+                        {
+                            $Obj = new SecQuestion();
                             $Obj->setID($this->src->getID());
                             $Obj->setEN($this->src->getEN());
                             $Obj->setES($this->src->getES());

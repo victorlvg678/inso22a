@@ -1,6 +1,7 @@
 <?php
 require_once('../dtos/teamcreatedto.php');
 require_once('../dtos/rolecreatedto.php');
+require_once('../dtos/secquestioncreatedto.php');
 
 class JSON{
     public function __construct(){
@@ -120,6 +121,15 @@ class JSON{
                 $Obj = new RoleCreateDTO();
                 $Obj->setID($Src["id"]);
                 $Obj->setCode($Src["code"]);
+                $Obj->setEN($Src["en"]);
+                $Obj->setES($Src["es"]);
+
+                return $Obj;
+            }
+
+            case "SecQuestionCreateDTO":{
+                $Obj = new SecQuestionCreateDTO();
+                $Obj->setID($Src["id"]);
                 $Obj->setEN($Src["en"]);
                 $Obj->setES($Src["es"]);
 

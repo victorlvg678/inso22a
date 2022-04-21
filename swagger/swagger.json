@@ -40,7 +40,7 @@
             },
             "post": {
                 "tags": [ "Team" ],
-                "summary": "Create new team",
+                "summary": "Create a new team",
                 "operationId": "Team_createTeam",
                 "consumes": [ "application/json", "text/json" ],
                 "produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -525,7 +525,7 @@
             },
             "post": {
                 "tags": [ "Role" ],
-                "summary": "Create new role",
+                "summary": "Create a new role",
                 "operationId": "Role_createRole",
                 "consumes": [ "application/json", "text/json" ],
                 "produces": [ "application/json", "text/json" ],
@@ -690,7 +690,7 @@
                 ]
             }
         },
-        "/INSO22A/api/teams.php?es={es}": {
+        "/INSO22A/api/roles.php?es={es}": {
             "get": {
                 "tags": [ "Role" ],
                 "summary": "Get roles by their name in Spanish",
@@ -761,6 +761,49 @@
                         "description": "Not found"
                     }
                 }
+            },
+            "post": {
+                "tags": [ "SecQuestion" ],
+                "summary": "Create a new security question",
+                "operationId": "SecQuestion_createSecQuestion",
+                "consumes": [ "application/json", "text/json" ],
+                "produces": [ "application/json", "text/json" ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SecQuestionReadDTO"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "secquestion",
+                        "in": "body",
+                        "description": "Security question to be created",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/SecQuestionCreateDTO"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "/INSO22A/api/secquestions.php?id={id}": {
@@ -1651,6 +1694,23 @@
                 "es": {
                     "type": "string",
                     "description": "Role's name in Spanish"
+                }
+            }
+        },
+        "SecQuestionCreateDTO": {
+            "type" : "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "SecQuestion's ID"
+                },
+                "en": {
+                    "type": "string",
+                    "description": "SecQuestion's name in English"
+                },
+                "es": {
+                    "type": "string",
+                    "description": "SecQuestion's name in Spanish"
                 }
             }
         },
