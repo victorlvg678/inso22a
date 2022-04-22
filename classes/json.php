@@ -2,6 +2,8 @@
 require_once('../dtos/teamcreatedto.php');
 require_once('../dtos/rolecreatedto.php');
 require_once('../dtos/secquestioncreatedto.php');
+require_once('../dtos/matchcreatedto.php');
+require_once('../dtos/usercreatedto.php');
 
 class JSON{
     public function __construct(){
@@ -146,6 +148,31 @@ class JSON{
                 $Obj->setScore2($Src["score2"]);
                 $Obj->setDuration($Src["duration"]);
                 $Obj->setLocation($Src["location"]);
+
+                return $Obj;
+            }
+
+            case "UserCreateDTO":{
+                $Obj = new UserCreateDTO();
+                $Obj->setUsername($Src["username"]);
+                $Obj->setFirstname($Src["firstname"]);
+                $Obj->setLastname($Src["lastname"]);
+                $Obj->setBirthDate($Src["birthdate"]);
+                $Obj->setDescription($Src["description"]);
+                $Obj->setTeam($Src["team"]);
+                $Obj->setSalt($Src["salt"]);
+                $Obj->setPassword($Src["password"]);
+                $Obj->setQID1($Src["qid1"]);
+                $Obj->setQID2($Src["qid2"]);
+                $Obj->setQID3($Src["qid3"]);
+                $Obj->setQID4($Src["qid4"]);
+                $Obj->setQA1($Src["qa1"]);
+                $Obj->setQA2($Src["qa2"]);
+                $Obj->setQA3($Src["qa3"]);
+                $Obj->setQA4($Src["qa4"]);
+                $Obj->setNationality($Src["nationality"]);
+                $Obj->setWeight($Src["weight"]);
+                $Obj->setHeight($Src["height"]);
 
                 return $Obj;
             }

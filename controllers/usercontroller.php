@@ -3,6 +3,7 @@ require_once('../repos/mysqluser.php');
 require_once('../classes/mapper.php');
 require_once('../classes/json.php');
 require_once('../models/user.php');
+require_once('../dtos/usercreatedto.php');
 require_once('../dtos/userreaddto.php');
 require_once('../classes/apierror.php');
 
@@ -121,6 +122,26 @@ class UserController{
 
         for($x = 0; $x < count($items); $x++){
             $mapper->setSrc($items[$x]);
+            array_push($users, $mapper->Map());
+        }
+
+        return json_encode($JSON->Parse($users));
+    }
+
+    public function createUser($Src){
+        $JSON = new JSON();
+        $user = $JSON->ToObject($Src, new UserCreateDTO());
+        $mapper = new Mapper();
+        $mapper->setSrc($user);
+        $mapper->setDst(new User());
+
+        $result = $this->repo->createUser($mapper->Map());
+
+        $mapper->setDst(new UserReadDTO());
+        $users = Array();
+        for($x = 0; $x < count($result); $x++)
+        {
+            $mapper->setSrc($result[$x]);
             array_push($users, $mapper->Map());
         }
 

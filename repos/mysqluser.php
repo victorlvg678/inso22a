@@ -129,4 +129,25 @@ class MYSQLYUser{
 
         return $users;
     }
+
+    public function createUser($User){
+        $query = 'INSERT INTO User(Username, Firstname, Lastname, BirthDate, Description, ' . 
+        'Status, Notify, Role, Salt, Password, QID1, QID2, QID3, QID4, QA1, QA2, QA3, QA4, ' .
+        'EntryDate, Nationality, Weight, Height, Team) VALUES (?, ?, ?, ?, ?, 1, 1, 1, ?, ?, ' .
+        '?, ?, ?, ?, ?, ?, ?, ?, CURRENT_DATE(), ?, ?, ?, ?)';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('sssssssiiiisssssddi', $User->getUsername(), $User->getFirstname(), 
+        $User->getLastname(), $User->getBirthDate(), $User->getDescription(), $User->getSalt(), 
+        $User->getPassword(), $User->getQID1(), $User->getQID2(), $User->getQID3(), $User->getQID4(),
+        $User->getQA1(), $User->getQA2(), $User->getQA3(), $User->getQA4(), $User->getNationality(),
+        $User->getWeight(), $User->getHeight(), $User->getTeam());
+
+        $users = Array();
+        if($stmt->execute()){
+            array_push($users, $User);
+        }
+
+        return $users;
+    }
 }

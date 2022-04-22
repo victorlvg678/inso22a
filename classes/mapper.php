@@ -3,6 +3,7 @@ require_once("../models/team.php");
 require_once("../dtos/teamcreatedto.php");
 require_once("../dtos/teamreaddto.php");
 require_once("../models/user.php");
+require_once('../dtos/usercreatedto.php');
 require_once("../dtos/userreaddto.php");
 require_once("../models/role.php");
 require_once("../dtos/rolecreatedto.php");
@@ -11,6 +12,7 @@ require_once("../models/secquestion.php");
 require_once("../dtos/secquestioncreatedto.php");
 require_once("../dtos/secquestionreaddto.php");
 require_once("../models/match.php");
+require_once('../dtos/matchcreatedto.php');
 require_once("../dtos/matchreaddto.php");
 class Mapper{
     private $src;
@@ -114,6 +116,37 @@ class Mapper{
                 }
                 break;
             }
+
+            case "UserCreateDTO":{
+                switch(get_class($this->dst)){
+                    case "User":{
+                      $Obj = new User();
+                      $Obj->setUsername($this->src->getUsername());
+                      $Obj->setFirstname($this->src->getFirstname());
+                      $Obj->setLastname($this->src->getLastname());
+                      $Obj->setTeam($this->src->getTeam());
+                      $Obj->setBirthDate($this->src->getBirthDate());
+                      $Obj->setDescription($this->src->getDescription());
+                      $Obj->setSalt($this->src->getSalt());
+                      $Obj->setPassword($this->src->getPassword());
+                      $Obj->setQID1($this->src->getQID1());
+                      $Obj->setQID2($this->src->getQID2());
+                      $Obj->setQID3($this->src->getQID3());
+                      $Obj->setQID4($this->src->getQID4());
+                      $Obj->setQA1($this->src->getQA1());
+                      $Obj->setQA2($this->src->getQA2());
+                      $Obj->setQA3($this->src->getQA3());
+                      $Obj->setQA4($this->src->getQA4());
+                      $Obj->setNationality($this->src->getNationality());
+                      $Obj->setWeight($this->src->getWeight());
+                      $Obj->setHeight($this->src->getHeight());
+                      
+                      return $Obj;
+                    }
+                }
+                break;
+            }
+
 
             case "Role":{
                 switch(get_class($this->dst)){
