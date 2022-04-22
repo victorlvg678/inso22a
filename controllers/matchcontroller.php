@@ -3,6 +3,7 @@ require_once('../repos/mysqlmatch.php');
 require_once('../classes/mapper.php');
 require_once('../classes/json.php');
 require_once('../models/match.php');
+require_once('../dtos/matchcreatedto.php');
 require_once('../dtos/matchreaddto.php');
 require_once('../classes/apierror.php');
 
@@ -211,6 +212,24 @@ class MatchController{
         return json_encode($JSON->Parse($matches));
     }
     
+    public function createMatch($Src){
+        $JSON = new JSON();
+        $match = $JSON->ToObject($Src, new MatchCreateDTO());
+        $mapper = new Mapper();
+        $mapper->setSrc($match);
+        $mapper->setDst(new Match());
+
+        $result = $this->repo->createMatch($mapper->Map());
+
+        $mapper->setDst(new MatchReadDTO());
+        $matches = Array();
+        for($x = 0; $x < count($result); $x++){
+            $mapper->setSrc($result[$x]);
+            array_push($matches, $mapper->Map());
+        }
+        
+        return json_encode($JSON->Parse($matches));
+    }
 }
 
 ?>

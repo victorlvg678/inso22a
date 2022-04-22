@@ -135,6 +135,20 @@ class JSON{
 
                 return $Obj;
             }
+
+            case "MatchCreateDTO":{
+                $Obj = new MatchCreateDTO();
+                $Obj->setMatchDate($Src["matchdate"]);
+                $Obj->setMatchTime($Src["matchtime"]);
+                $Obj->setTeam1($Src["team1"]);
+                $Obj->setTeam2($Src["team2"]);
+                $Obj->setScore1($Src["score1"]);
+                $Obj->setScore2($Src["score2"]);
+                $Obj->setDuration($Src["duration"]);
+                $Obj->setLocation($Src["location"]);
+
+                return $Obj;
+            }
         }
     }
 }

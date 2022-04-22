@@ -198,6 +198,27 @@ class Mapper{
                     }
                     break;
                 }
+
+                case "MatchCreateDTO":
+                    {
+                        switch(get_class($this->dst)){
+                            case "Match":
+                                {
+                                    $Obj = new Match();
+                                    $Obj->setMatchDate($this->src->getMatchDate());
+                                    $Obj->setMatchTime($this->src->getMatchTime());
+                                    $Obj->setTeam1($this->src->getTeam1());
+                                    $Obj->setTeam2($this->src->getTeam2());
+                                    $Obj->setScore1($this->src->getScore1());
+                                    $Obj->setScore2($this->src->getScore2());
+                                    $Obj->setDuration($this->src->getDuration());
+                                    $Obj->setLocation($this->src->getLocation());
+    
+                                    return $Obj;
+                                }
+                        }
+                        break;
+                    }
         }
     }
     

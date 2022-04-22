@@ -206,5 +206,20 @@ class MYSQLMatch{
         return $matches;
     }
 
+    public function createMatch($Match){
+        $query = 'INSERT INTO Match(MatchDate, MatchTime, Team1, Team2, Score1, Score2, Duration, Location) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('ssiiiids', $Match->getMatchDate(), $Match->getMatchTime(), $Match->getTeam1(),
+        $Match->getTeam2(), $Match->getScore1(), $Match->getScore2(), $Match->getDuration(), $Match->getLocation());
+
+        $matches = Array();
+        if($stmt->execute()){
+            array_push($matches, $Match);
+        }
+
+        return $matches;
+    }
+
 }
 ?>
