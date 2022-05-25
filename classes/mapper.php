@@ -100,6 +100,7 @@ class Mapper{
                       $Obj->setUsername($this->src->getUsername());
                       $Obj->setFirstname($this->src->getFirstname());
                       $Obj->setLastname($this->src->getLastname());
+                      $Obj->setEmail($this->src->getEmail());
                       $Obj->setTeam($this->src->getTeam());
                       $Obj->setBirthDate($this->src->getBirthDate());
                       $Obj->setDescription($this->src->getDescription());
@@ -124,6 +125,7 @@ class Mapper{
                       $Obj->setUsername($this->src->getUsername());
                       $Obj->setFirstname($this->src->getFirstname());
                       $Obj->setLastname($this->src->getLastname());
+                      $Obj->setEmail($this->src->getEmail());
                       $Obj->setTeam($this->src->getTeam());
                       $Obj->setBirthDate($this->src->getBirthDate());
                       $Obj->setDescription($this->src->getDescription());

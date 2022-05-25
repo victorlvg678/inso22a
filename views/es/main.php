@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="../../media/css/main.css"/>
     <link rel="stylesheet" href="../../media/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../media/css/boxicons.min.css" />
+    <link rel="stylesheet" href="../../media/css/tabs.css" />
 
     <!-- Scripts -->
-    <script type="text/javascript" src="../../media/bootstrap/bootstrap.bundle.min.css"></script>
+    <script type="text/javascript" src="../../media/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../../media/js/main.js"></script>
 </head>
 <body id="body-pd">
@@ -53,48 +54,36 @@
     </div>
     <!--Container Main start-->
     <div class="height-100 bg-light">
-        <br>
-        <br>
-        <br>
-        <button class="btn btn-primary">Registrar</button>
-        <button class="btn btn-primary">Buscar</button>
-        <button class="btn btn-primary">Actualizar</button>
-        <button class="btn btn-danger">Eliminar</button>
-        <h4>Usuarios</h4>
-        <p>Nombre(s)</p>
-        <input class="form-control" type="text" style="width: auto">
-        <p>Apellido(s)</p>
-        <input class="form-control" type="text"  style="width: auto">
-        <p>Nombre de usuario</p>
-        <input class="form-control" type="text"  style="width: auto">
-        <p>Contraseña</p>
-        <input class="form-control" type="text"  style="width: auto">
-        <p>Pregunta de seguridad 1</p>
-        <select class="form-control" style="width: auto">
-            <option>¿Cuál es tu color favorito</option>
-        </select>
-        <p>Respuesta</p>
-        <input class="form-control" type="text"  style="width: auto">
-        <p>Pregunta de seguridad 2</p>
-        <select class="form-control" style="width: auto">
-            <option>¿Cuál es tu color favorito</option>
-        </select>
-        <p>Respuesta</p>
-        <input class="form-control" type="text"  style="width: auto">
-        <p>Pregunta de seguridad 3</p>
-        <select class="form-control" style="width: auto">
-            <option>¿Cuál es tu color favorito</option>
-        </select>
-        <p>Respuesta</p>
-        <input class="form-control" type="text"  style="width: auto">
-        <p>Pregunta de seguridad 4</p>
-        <select class="form-control" style="width: auto">
-            <option>¿Cuál es tu color favorito</option>
-        </select>
-        <p>Respuesta</p>
-        <input class="form-control" type="text"  style="width: auto">
+        <div class="container">
+            <input type="radio" id="tab1" name="tab" checked>
+            <label for="tab1"><i class="bx bx-message-square-add"></i> Crear</label>
+            <input type="radio" id="tab2" name="tab">
+            <label for="tab2"><i class="bx bx-search"></i> Buscar</label>
+            <input type="radio" id="tab3" name="tab">
+            <label for="tab3"><i class="bx bx-message-square-edit"></i> Actualizar</label>
+            <input type="radio" id="tab4" name="tab">
+            <label for="tab4"><i class="bx bx-message-square-x"></i> Eliminar</label>
+            <div class="line"></div>
+                <div class="content-container">
+                    <div class="content" id="c1">
+                        <h3>Features</h3>
+                        <p>There really are a lot of features.</p>
+                    </div>
+                    <div class="content" id="c2">
+                        <h3>History</h3>
+                        <p>The project started in 2018 when someone needed something.</p>
+                    </div>
+                    <div class="content" id="c3">
+                        <h3>Reviews</h3>
+                        <p>Amazing product. I don't know how it works.</p>
+                        <i>- Anonymous</i>
+                    </div>
+                    <div class="content" id="c4">
+                        <h3>Share</h3>
+                        <p>This product is currently not shareable.</p>
+                    </div>
+            </div>
+        </div>
     </div>
-    <!--Container Main end-->
-<script type="text/javascript" src="menu.js"></script>
 </body>
 </html>

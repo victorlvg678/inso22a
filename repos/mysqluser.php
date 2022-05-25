@@ -92,6 +92,26 @@ class MYSQLYUser{
         return $users;
     }
 
+    public function getByEmail($Email){
+        $query = 'SELECT * FROM Users WHERE Email LIKE ? ORDER BY ID ASC';
+
+        $Email = '%' . $Email . '%';
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $Email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $items = $result->fetch_all(MYSQLI_ASSOC);
+
+        $users = Array();
+        for($x = 0; $x < count($items); $x++){
+            $user = new User();
+            $user->set($items[$x]);
+            array_push($users, $user);
+        }
+
+        return $users;
+    }
+
     public function getByTeam($Team){
         $query = "SELECT * FROM Users WHERE Team = (SELECT ID FROM Team WHERE Name LIKE ? ORDER BY ID ASC LIMIT 0, 0)";
         

@@ -40,6 +40,7 @@ class JSON{
                         $object["username"] = $Src[$x]->getUsername();
                         $object["firstname"] = $Src[$x]->getFirstname();
                         $object["lastname"] = $Src[$x]->getLastname();
+                        $object["email"] = $Src[$x]->getEmail();
                         $object["team"] = $Src[$x]->getTeam();
                         $object["birthdate"] = $Src[$x]->getBirthDate();
                         $object["description"] = $Src[$x]->getDescription();
@@ -157,6 +158,7 @@ class JSON{
                 $Obj->setUsername($Src["username"]);
                 $Obj->setFirstname($Src["firstname"]);
                 $Obj->setLastname($Src["lastname"]);
+                $Obj->setEmail($Src["email"]);
                 $Obj->setBirthDate($Src["birthdate"]);
                 $Obj->setDescription($Src["description"]);
                 $Obj->setTeam($Src["team"]);

@@ -3,6 +3,7 @@ class UserCreateDTO{
     private $username;
     private $firstname;
     private $lastname;
+    private $email;
     private $team;
     private $birthdate;
     private $description;
@@ -24,6 +25,7 @@ class UserCreateDTO{
         $this->username = 'john.doe';
         $this->firstname = 'John';
         $this->lastname = 'Doe';
+        $this->email = "example@email.com";
         $this->team = 0;
         $this->birthdate = '1900-01-01';
         $this->description = '';
@@ -70,6 +72,15 @@ class UserCreateDTO{
         $this->lastname = 'Doe';
     }
     
+    public function setEmail($Email){
+        if(!empty($Email)){
+            $this->email = $Email;
+            return;
+        }
+
+        $this->email = 'example@email.com';
+    }
+
     public function setTeam($Team){
         if(!empty($Team)){
             $this->team = $Team;
@@ -231,6 +242,10 @@ class UserCreateDTO{
             $this->setLastname($Src["Lastname"]);
         }
 
+        if(array_key_exists("Email", $Src)){
+            $this->setLastname($Src["Email"]);
+        }
+
         if(array_key_exists("Team", $Src)){
             $this->setTeam($Src["Team"]);
         }
@@ -321,6 +336,10 @@ class UserCreateDTO{
         return $this->team;
     }
     
+    public function getEmail(){
+        return $this->email;
+    }
+
     public function getBirthdate(){
         return $this->birthdate;
     }

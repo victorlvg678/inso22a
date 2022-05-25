@@ -43,6 +43,16 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         return;
     }
 
+    if(isset($_GET['email'])){
+        if(empty($_GET['email'])){
+            echo 'Error: value cannot be null';
+            return;
+        }
+        
+        echo $Controller->getByEmail($_GET['email']);
+        return;
+    }
+
     if(isset($_GET['team'])){
         if(empty($_GET['team'])){
             echo 'Error: value cannot be null';

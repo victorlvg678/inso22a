@@ -4,6 +4,7 @@ class User{
     private $username;
     private $firstname;
     private $lastname;
+    private $email;
     private $team;
     private $birthdate;
     private $description;
@@ -31,6 +32,7 @@ class User{
         $this->username = 'john.doe';
         $this->firstname = 'John';
         $this->lastname = 'Doe';
+        $this->email = "exmaple@email.com";
         $this->team = 0;
         $this->birthdate = '1900-01-01';
         $this->description = '';
@@ -89,6 +91,15 @@ class User{
         }
 
         $this->lastname = 'Doe';
+    }
+
+    public function setEmail($Email){
+        if(!empty($Email)){
+            $this->email = $Email;
+            return;
+        }
+
+        $this->email = 'example@email.com';
     }
     
     public function setTeam($Team){
@@ -302,6 +313,10 @@ class User{
             $this->setLastname($Src["Lastname"]);
         }
 
+        if(array_key_exists("Email", $Src)){
+            $this->setLastname($Src["Email"]);
+        }
+
         if(array_key_exists("Team", $Src)){
             $this->setTeam($Src["Team"]);
         }
@@ -400,6 +415,10 @@ class User{
         return $this->lastname;
     }
     
+    public function getEmail(){
+        return $this->email;
+    }
+
     public function getName(){
         return $this->firstname . ' ' . $this->lastname;
     }

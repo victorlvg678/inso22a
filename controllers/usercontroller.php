@@ -88,6 +88,26 @@ class UserController{
         return json_encode($JSON->Parse($users));
     }
     
+    public function getByEmail($Email){
+        $items = $this->repo->getByEmail($Email);
+        if(count($items) <= 0){
+            $Error = new APIError(8);
+            return $Error->getMessage();
+        }
+        
+        $users = Array();
+        $mapper = new Mapper();
+        $JSON = new JSON();
+        $mapper->setDst(new UserReadDTO());
+
+        for($x = 0; $x < count($items); $x++){
+            $mapper->setSrc($items[$x]);
+            array_push($users, $mapper->Map());
+        }
+        
+        return json_encode($JSON->Parse($users));
+    }
+    
     public function getByTeam($Team){
         $items = $this->repo->getByTeam($Team);
         if(count($items) <= 0){
