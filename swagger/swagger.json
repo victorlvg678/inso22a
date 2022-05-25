@@ -1612,6 +1612,47 @@
                 ]
             }
         },
+        "/INSO22A/api/users.php?email={email}": {
+            "get": {
+                "tags": [ "User" ],
+                "summary": "Get users by email",
+                "operationId": "User_getByEmail",
+                "consumes": [],
+                "produces": [ "application/json", "text/json" ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserReadDTO"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "User's email" 
+                    }
+                ]
+            }
+        },
         "/INSO22A/api/users.php?team={name}": {
             "get": {
                 "tags": [ "User" ],
@@ -1910,6 +1951,10 @@
                     "type": "string",
                     "description": "User's last name"
                 },
+                "email": {
+                    "type": "string",
+                    "description": "Users's email"
+                },
                 "team": {
                     "type": "integer",
                     "description": "Users's team ID"
@@ -1995,6 +2040,10 @@
                 "lastname": {
                     "type": "string",
                     "description": "User's last name"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "User's email"
                 },
                 "team": {
                     "type": "integer",
