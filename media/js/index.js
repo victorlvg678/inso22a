@@ -8,6 +8,7 @@ document.onreadystatechange = () => {
 		const nextPage = document.getElementById('nextPage');
 		const page1 = document.getElementById('page1');
 		const page2 = document.getElementById('page2');
+		const country = document.getElementById('country');
 
 		signUpButton.addEventListener('click', () => {
 			container.classList.add("right-panel-active");
@@ -41,6 +42,20 @@ document.onreadystatechange = () => {
 			nextPage.classList.toggle("hidden");
 		});
 		
+		country.addEventListener('change', () => {
+			var flag = document.getElementById('Flag');
+			if(flag)
+			{
+				for(var i = 0; i < flag.classList.length; i++)
+				{
+					flag.classList.remove(flag.classList[i]);
+				}
+				flag.classList.add("input-icon");
+				flag.classList.add("fi");
+				flag.classList.add("fi-" + country.options[country.selectedIndex].value);
+			}
+		});
+
 
 	}
 }

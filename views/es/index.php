@@ -1,4 +1,5 @@
-<?php include_once("../../classes/sanitize.php");?>
+<?php include_once("../../classes/sanitize.php");
+include_once('../../repos/mysqlcountry.php');?>
 <!DOCTYPE html5>
 <html>
 <head>
@@ -44,14 +45,15 @@
 				</div>
 				
 				<div class="input-container">
-					<i class="bx bx-flag input-icon"></i>
-					<select name="nationality">
+					<i class="bx bx-flag input-icon" id="Flag"></i>
+					<select name="nationality" id="country">
 						<option value="" disabled="disabled" selected="selected" hidden="hidden">País</option>
 						<?php
-							$countries = array();
+							$repo = new MYSQLCountry();
+							$countries = $repo->getAll();
 							for($i = 0; $i < count($countries); $i++)
 							{
-								echo "<option>" . $countries[$i] . "</option>";
+								echo '<option value="' . $countries[$i]['Code']. '">' . $countries[$i]['ES'] . "</option>";
 							}
 						?>
 					</select>
@@ -74,6 +76,7 @@
 							{
 								echo "<option>" . $secquestions[$i] . "</option>";
 							}
+							echo '<option value="1">¿Cuál es el nombre de tu madre?</option>';
 						?>
 					</select>
 				</div>
@@ -88,6 +91,7 @@
 						<option value="" disabled="disabled" selected="selected" hidden="hidden">Pregunta de seguridad 2</option>
 						<?php
 							$secquestions = array();
+							echo '<option value="2">¿En qué ciudad naciste?</option>';
 							for($i = 0; $i < count($secquestions); $i++)
 							{
 								echo "<option>" . $secquestions[$i] . "</option>";
@@ -105,6 +109,7 @@
 					<select name="qid3">
 						<option value="" disabled="disabled" selected="selected" hidden="hidden">Pregunta de seguridad 3</option>
 						<?php
+							echo '<option value="3">¿Qué querías ser de grande?</option>';
 							$secquestions = array();
 							for($i = 0; $i < count($secquestions); $i++)
 							{
@@ -123,6 +128,7 @@
 					<select name="qid4">
 						<option value="" disabled="disabled" selected="selected" hidden="hidden">Pregunta de seguridad 4</option>
 						<?php
+							echo '<option value="4">¿Cuál fue la primera compañía a la que entraste a trabajar?</option>';
 							$secquestions = array();
 							for($i = 0; $i < count($secquestions); $i++)
 							{

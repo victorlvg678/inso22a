@@ -53,7 +53,90 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
+    <div class="height-100 bg-light" id="container1" style="display: block;">
+        <div class="container" >
+            <input type="radio" id="tab1" name="tab" checked>
+            <label for="tab1"><i class="bx bx-message-square-add"></i> Crear</label>
+            <input type="radio" id="tab2" name="tab">
+            <label for="tab2"><i class="bx bx-search"></i> Buscar</label>
+            <input type="radio" id="tab3" name="tab">
+            <label for="tab3"><i class="bx bx-message-square-edit"></i> Actualizar</label>
+            <input type="radio" id="tab4" name="tab">
+            <label for="tab4"><i class="bx bx-message-square-x"></i> Eliminar</label>
+            <div class="line"></div>
+                <div class="content-container">
+                    <div class="content" id="c1" style="display: block;">
+                        <h3>Dar de alta un equipo</h3>
+                        <p>Nombre de equipo</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        <p>There really are a lot of features.</p>
+                        <input type="text" class="form-control" name="name" placeholder="Nombre de equipo">
+                        
+                    </div>
+                    <div class="content" id="c2">
+                        <h3>History</h3>
+                        <p>The project started in 2018 when someone needed something.</p>
+                    </div>
+                    <div class="content" id="c3">
+                        <h3>Reviews</h3>
+                        <p>Amazing product. I don't know how it works.</p>
+                        <i>- Anonymous</i>
+                    </div>
+                    <div class="content" id="c4">
+                        <h3>Share</h3>
+                        <p>This product is currently not shareable.</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="height-100 bg-light" id="container2" style="display: none;">
+        <div class="container" >
+            <input type="radio" id="tab1" name="tab" checked>
+            <label for="tab1"><i class="bx bx-message-square-add"></i> Crear</label>
+            <input type="radio" id="tab2" name="tab">
+            <label for="tab2"><i class="bx bx-search"></i> Buscar</label>
+            <input type="radio" id="tab3" name="tab">
+            <label for="tab3"><i class="bx bx-message-square-edit"></i> Actualizar</label>
+            <input type="radio" id="tab4" name="tab">
+            <label for="tab4"><i class="bx bx-message-square-x"></i> Eliminar</label>
+            <div class="line"></div>
+                <div class="content-container">
+                    <div class="content" id="c1" style="display: block;">
+                        <h3>Features</h3>
+                        <input type="text" class="form-control" value="asd">
+                        <p>There really are a lot of features.</p>
+                    </div>
+                    <div class="content" id="c2">
+                        <h3>History</h3>
+                        <p>The project started in 2018 when someone needed something.</p>
+                    </div>
+                    <div class="content" id="c3">
+                        <h3>Reviews</h3>
+                        <p>Amazing product. I don't know how it works.</p>
+                        <i>- Anonymous</i>
+                    </div>
+                    <div class="content" id="c4">
+                        <h3>Share</h3>
+                        <p>This product is currently not shareable.</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="height-100 bg-light" id="container3" style="display: none;">
         <div class="container">
             <input type="radio" id="tab1" name="tab" checked>
             <label for="tab1"><i class="bx bx-message-square-add"></i> Crear</label>
@@ -65,8 +148,9 @@
             <label for="tab4"><i class="bx bx-message-square-x"></i> Eliminar</label>
             <div class="line"></div>
                 <div class="content-container">
-                    <div class="content" id="c1">
+                    <div class="content" id="c1" style="display: block;">
                         <h3>Features</h3>
+                        <input type="text" class="form-control" value="asd">
                         <p>There really are a lot of features.</p>
                     </div>
                     <div class="content" id="c2">
